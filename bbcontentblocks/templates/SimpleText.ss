@@ -1,0 +1,2 @@
+<{$TitleType}>{$Title}</{$TitleType}>
+$Content
