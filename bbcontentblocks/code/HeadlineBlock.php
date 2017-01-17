@@ -1,13 +1,17 @@
 <?php
 
-
-class SimpleText extends ContentBlock
+/**
+ * Created by PhpStorm.
+ * User: bbuessenschuett
+ * Date: 11.11.2016
+ * Time: 16:14
+ */
+class HeadlineBlock extends ContentBlock
 {
     public static $db = array(
         "Title" => "Varchar(255)",
         "TitleType" => "Enum('h1,h2,h3,h4,h5,h6')",
-        "Alignment" => "Enum('left,center,right')",
-        "Content" => "HTMLText"
+        "Alignment" => "Enum('left,center,right')"
     );
     protected function onBeforeWrite() {
         if (strlen($this->BackendTitle) === 0) {
@@ -15,7 +19,6 @@ class SimpleText extends ContentBlock
         }
         parent::onBeforeWrite();
     }
-
     public function getCMSFields()
     {
         if(Director::isLive()) {
@@ -25,14 +28,13 @@ class SimpleText extends ContentBlock
             $fields->add(new DropdownField(
                 'TitleType',
                 _t("ContentBlock.TitleType", "Title Type"),
-                singleton('SimpleText')->dbObject('TitleType')->enumValues()
+                singleton('HeadlineBlock')->dbObject('TitleType')->enumValues()
             ));
             $fields->add(new DropdownField(
                 'Alignment',
                 _t("ContentBlock.Alignment", "Align"),
-                singleton('SimpleText')->dbObject('Alignment')->enumValues()
+                singleton('HeadlineBlock')->dbObject('Alignment')->enumValues()
             ));
-            $fields->add(new HtmlEditorField("Content", _t("ContentBlock.Content", "Content")));
         }
         else {
             $fields = parent::getCMSFields();
@@ -43,12 +45,11 @@ class SimpleText extends ContentBlock
     {
         $arrayData = new ArrayData(
             array(
-                "Title" => "<".$this->getField("TitleType").">".$this->getField("Title")."</".$this->getField("TitleType").">",
-                "Alignment" => $this->getField("Alignment"),
-                "Content" => $this->getField("Content")
+                "Title" => "<".$this->getField("TitleType")." class=\"section-title\">".$this->getField("Title")."</".$this->getField("TitleType").">",
+                "Alignment" => $this->getField("Alignment")
             )
         );
-        return $arrayData->renderWith("SimpleText");
+        return $arrayData->renderWith("HeadlineBlock");
     }
     /**
      * Add a custom validator
@@ -57,7 +58,6 @@ class SimpleText extends ContentBlock
      * @return RequiredFields
      */
     public function getCMSValidator() {
-        return new RequiredFields('Title', 'Content');
+        return new RequiredFields('Title');
     }
-
 }

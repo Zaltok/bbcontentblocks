@@ -1,3 +1,11 @@
+---
+Name: bbcontentblocks
+After:
+  - 'general/*''
+---
 Page:
   extensions:
     - ContentBlocksPageExtension
+LeftAndMain:
+  extra_requirements_css:
+    - bbcontentblocks/css/FixGridfield.css

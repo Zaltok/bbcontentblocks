@@ -1,0 +1,9 @@
+---
+Name: OnePager
+After:
+  - 'wallhaus/*'
+---
+SiteConfig:
+  extensions:
+    - SliderSiteConfig
+---

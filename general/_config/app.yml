@@ -1,0 +1,9 @@
+Name: general
+After:
+  - 'framework/*'
+  - 'cms/*'
+---
+SiteConfig:
+  extensions:
+    - GeneralSiteConfig
+---

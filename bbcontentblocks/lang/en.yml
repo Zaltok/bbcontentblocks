@@ -1,0 +1,12 @@
+en:
+  ContentBlock:
+    PLURALNAME: 'Content Blocks'
+    SINGULARNAME: 'Content Block'
+  ImageWithText:
+    PLURALNAME: 'Image With Texts'
+    SINGULARNAME: 'Image With Text'
+  SimpleText:
+    PLURALNAME: 'Simple Texts'
+    SINGULARNAME: 'Simple Text'
+  SiteTree:
+    ContentBlocks: ContentBlocks

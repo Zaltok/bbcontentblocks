@@ -1,0 +1,31 @@
+de:
+  SiteTree:
+    ContentBlocks: 'Inhaltselemente'
+  ContentBlock:
+    SINGULARNAME: 'Inhaltselement'
+    PLURALNAME: 'Inhaltselemente'
+    Title: 'Titel'
+    TitleType: 'Titel Typ'
+    Content: 'Inhalt'
+  SimpleText:
+    SINGULARNAME: 'Einfaches Textelement'
+    PLURALNAME: 'Einfache Textelemente'
+  HeadlineBlock:
+    SINGULARNAME: 'Überschrift'
+    PLURALNAME: 'Überschriften'
+  ImageWithText:
+    SINGULARNAME: 'Bild mit Text'
+    PLURALNAME: 'Bild mit Text'
+    ImageAlign: 'Bild Ausrichtung'
+  ThreeColBlock:
+    SINGULARNAME: '3-Spalten Box'
+    PLURALNAME: '3-Spalten Boxen'
+    LeftBlock: 'Linke Box'
+    MiddleBlock: 'Mittlere Box'
+    RightBlock: 'Rechte Box'
+  FormBlock:
+    SideBarTitle: 'Titel der linken Seite'
+    SidebarContent: 'Inhalt der linken Seite'
+  UserDefinedFormForContentBlock:
+    SINGULARNAME: 'Anpassbares Formular'
+

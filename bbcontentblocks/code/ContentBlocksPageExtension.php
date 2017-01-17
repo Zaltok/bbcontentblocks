@@ -1,11 +1,5 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: Benjamin
- * Date: 13.10.2016
- * Time: 15:00
- */
 class ContentBlocksPageExtension extends DataExtension
 {
     public static $db = array(
@@ -17,17 +11,18 @@ class ContentBlocksPageExtension extends DataExtension
     );
 
     public function updateCMSFields(FieldList $fields) {
-        $fields->addFieldToTab("Root.Main", new CheckboxField('ClassicMode'));
+        if(SiteConfig::current_site_config()->ClassicModeEnable)
+            $fields->addFieldToTab("Root.Main", new CheckboxField('ClassicMode'));
         if($this->owner->ClassicMode != true) {
             $config = GridFieldConfig_RelationEditor::create();
             // Set the names and data for our gridfield columns
             $config->getComponentByType('GridFieldDataColumns')->setDisplayFields(array(
-                'Title' => 'Title'
+                'BackendTitle' => 'BackendTitle',
             ));
             // Create a gridfield to hold the Content Blocks
             $contentBlocks = new GridField(
                 'ContentBlocks', // Field name
-                'ContentBlocks', // Field title
+                _t("ContentBlock.PLURALNAME", "Content Blocks"), // Field title
                 $this->owner->ContentBlocks(), // List of all related students
                 $config
             );
@@ -38,8 +33,17 @@ class ContentBlocksPageExtension extends DataExtension
             $contentBlocks->getConfig()
                 ->removeComponentsByType('GridFieldAddNewButton')
                 ->addComponent($contentBlockMultiClassBtn);
+            $contentBlocks->getConfig()->getComponentByType("GridFieldAddExistingAutocompleter")->setSearchFields(array("BackendTitle"));
+            $contentBlocks->getConfig()->removeComponentsByType("GridFieldAddExistingAutocompleter");
+            $contentBlocks->getConfig()->addComponent(new GridFieldOrderableRows('SortOrder'));
             // Create a tab named "Students" and add our field to it
-            $fields->addFieldToTab('Root.ContentBlocks', $contentBlocks);
+            //$fields->addFieldToTab('Root.Main', $contentBlocks, "Metadata");
+            $fields->addFieldToTab('Root.Main', ToggleCompositeField::create('ContentBlocksToggle', _t('SiteTree.ContentBlocks', 'ContentBlocks'),
+                array(
+                    $contentBlocks
+                )
+            )->setHeadingLevel(4), "Metadata");
+
             $fields->removeByName("Content");
         }
     }

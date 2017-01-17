@@ -1,0 +1,14 @@
+de:
+  OnePager:
+    SINGULARNAME: "Onepager"
+    DESCRIPTION: "Kontainer für einen Onepager"
+    ActiveImageSlider: "Bild Slider im Kopf aktiviert"
+    Customizing: "Anpassungen"
+  OnePagerSection:
+    SINGULARNAME: "Onepager Bereich"
+    DESCRIPTION: "Einzelner Bereich des Onepagers"
+  SliderImage:
+    SINGULARNAME: "Bild"
+    PLURALNAME: "Bilder für Slider"
+    ShowTitleInSlider: "Zeige den Titel in der Slider Animation an."
+
